@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <title>Form Sponsor</title>
+  <style>
+    body{font-family:system-ui, sans-serif;background:#f7f8fb;display:flex;justify-content:center;padding-top:50px;}
+    .card{background:#fff;padding:20px;width:100%;max-width:500px;border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,0.1);}
+    label{display:block;margin-bottom:5px;font-size:14px;color:#666;}
+    input{width:100%;padding:10px;margin-bottom:15px;border:1px solid #ddd;border-radius:4px;box-sizing:border-box;}
+    button{background:#10b981;color:#fff;border:none;padding:10px 15px;border-radius:4px;cursor:pointer;}
+    .btn-cancel{background:transparent;color:#666;border:1px solid #ddd;margin-right:10px;text-decoration:none;display:inline-block;}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Form Sponsor</h2>
+    <form method="POST" action="index.php?nav=sponsor">
+      <input type="hidden" name="action" value="{{ACTION}}">
+      <input type="hidden" name="id" value="{{ID}}">
+
+      <label>Nama Sponsor</label>
+      <input type="text" name="nama" required value="{{NAMA}}">
+
+      <label>Jenis Industri</label>
+      <input type="text" name="jenis" required value="{{JENIS}}">
+
+      <label>Nilai Kontrak (USD/IDR)</label>
+      <input type="number" name="nilai" required value="{{NILAI}}">
+
+      <a href="index.php?nav=sponsor" class="btn btn-cancel">Batal</a>
+      <button type="submit">Simpan</button>
+    </form>
+  </div>
+</body>
+</html>
