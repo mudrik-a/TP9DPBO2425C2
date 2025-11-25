@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <title>Daftar Pembalap</title>
+  <style>
+    body{font-family:sans-serif;background:#f7f8fb;padding:20px;}
+    .card{background:#fff;padding:20px;border-radius:8px;border:1px solid #e6e9ef;}
+    
+    /* NAVIGASI */
+    .nav {margin-bottom:20px; border-bottom:1px solid #ddd; padding-bottom:10px;}
+    .nav a {margin-right:20px; text-decoration:none; color:#555; font-weight:bold; font-size:16px;}
+    .nav a.active {color:blue; border-bottom:2px solid blue;}
+
+    table{width:100%;border-collapse:collapse;margin-top:15px;}
+    th{text-align:left;padding:10px;background:#f4f4f4;border-bottom:1px solid #ddd;}
+    td{padding:10px;border-bottom:1px solid #eee;}
+    
+    .btn{padding:8px 12px;border-radius:4px;text-decoration:none;font-size:13px;}
+    .btn-add{background:blue;color:#fff;}
+    .btn-edit{color:blue;background:none;border:none;cursor:pointer;}
+    .btn-delete{color:red;background:none;border:none;cursor:pointer;margin-left:5px;}
+  </style>
+</head>
+<body>
+  <div class="nav">
+      <a href="index.php" class="active">Pembalap</a>
+      <a href="index.php?nav=sponsor">Sponsor</a>
+  </div>
+
+  <div class="card">
+    <h1>Data Pembalap</h1>
+    <a href="index.php?screen=add" class="btn btn-add">+ Tambah Pembalap</a>
+    <table>
+      <thead>
+        <tr>
+          <th>No</th><th>Nama</th><th>Tim</th><th>Negara</th><th>Poin</th><th>Menang</th><th>Aksi</th>
+        </tr>
+      </thead>
+      <tbody>
+        </tbody>
+    </table>
+  </div>
+  
+  <script>
+    // Script buat handle tombol delete tanpa form di setiap baris
+    document.querySelectorAll('.btn-delete').forEach(btn => {
+      btn.onclick = () => {
+        if(confirm('Hapus data ini?')){
+          let f = document.createElement('form'); f.method='POST'; f.action='index.php';
+          f.innerHTML = `<input type='hidden' name='action' value='delete'><input type='hidden' name='id' value='${btn.dataset.id}'>`;
+          document.body.appendChild(f); f.submit();
+        }
+      }
+    });
+  </script>
+</body>
+</html>
